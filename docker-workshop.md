@@ -688,13 +688,166 @@ docker rm api-instance-1 api-instance-2 api-instance-3
 
 ---
 
+## Part 10: Docker Layers — Understanding the Build Cache
+
+Every instruction in a Dockerfile creates a **layer**. Understanding layers is key to writing fast, efficient Dockerfiles.
+
+```
+┌─────────────────────────┐
+│ Layer 5: COPY . .       │  ← changes often (rebuild)
+├─────────────────────────┤
+│ Layer 4: RUN pip install│  ← cached if requirements unchanged
+├─────────────────────────┤
+│ Layer 3: COPY req.txt   │  ← cached if file unchanged
+├─────────────────────────┤
+│ Layer 2: WORKDIR /app   │  ← never changes
+├─────────────────────────┤
+│ Layer 1: FROM python    │  ← never changes
+└─────────────────────────┘
+```
+
+### Three Key Rules
+
+1. **Layers are read-only and shared** — multiple images using the same base share that layer on disk (saves storage)
+2. **Cache breaks top-to-bottom** — if Layer 3 changes, everything below it (4, 5) also rebuilds
+3. **Order matters** — put things that change rarely at the top, things that change often at the bottom
+
+### See Layers Yourself
+
+```bash
+docker history workshop-api:v1
+```
+
+> This is why we copy `requirements.txt` before `COPY . .` — so changing your code doesn't force a full reinstall of packages.
+
+---
+
+## Part 11: Multi-Stage Builds with uv (Production FastAPI)
+
+The earlier multi-stage example used pip. Here's the **production-ready version using uv**:
+
+### Single-Stage (works but not optimized)
+
+```dockerfile
+FROM python:3.13-slim
+WORKDIR /app
+RUN pip install uv
+COPY pyproject.toml uv.lock ./
+RUN uv sync --frozen --no-dev
+COPY . .
+EXPOSE 8000
+CMD ["uv", "run", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+```
+
+Problem: `uv` (~30MB) stays in the final image. You only need it during install, not at runtime.
+
+### Multi-Stage with uv (optimized)
+
+```dockerfile
+# Stage 1: Install packages
+FROM python:3.13-slim AS builder
+WORKDIR /app
+RUN pip install uv
+COPY pyproject.toml uv.lock ./
+RUN uv sync --frozen --no-dev
+
+# Stage 2: Clean final image
+FROM python:3.13-slim
+WORKDIR /app
+ENV PYTHONUNBUFFERED=1
+ENV PATH="/app/.venv/bin:$PATH"
+COPY --from=builder /app/.venv /app/.venv
+COPY . .
+EXPOSE 8000
+CMD ["fastapi", "run", "--host", "0.0.0.0", "--port", "8000"]
+```
+
+**How it works:**
+- `AS builder` — names Stage 1 so we can reference it
+- `COPY --from=builder` — grabs the `.venv` folder from Stage 1 into Stage 2
+- `ENV PATH=...` — lets the shell find `fastapi`/`uvicorn` without typing full paths
+- Stage 1 is **thrown away** — only Stage 2 becomes the final image
+
+```
+Stage 1 (builder)                    Stage 2 (final)
+┌──────────────────────┐            ┌──────────────────────┐
+│  pip, uv, build tools│            │  NO pip, NO uv       │
+│  .venv/ (packages) ──┼── COPY ───►  .venv/ (packages)   │
+│                      │            │  your FastAPI code   │
+└──────────────────────┘            └──────────────────────┘
+     THROWN AWAY                        FINAL IMAGE (smaller)
+```
+
+---
+
+## Part 12: Volumes — Persisting Data
+
+Containers are **ephemeral** — delete a container, all data inside is lost. Volumes solve this by storing data **outside** the container.
+
+### Without Volumes (dangerous)
+
+```bash
+docker rm my-database    # 💀 all data gone forever
+```
+
+### With Volumes (safe)
+
+```bash
+docker run -d \
+  --name my-postgres \
+  -v my-data:/var/lib/postgresql/data \
+  -p 5432:5432 \
+  postgres:16
+```
+
+```
+Your Host Machine          Container
+┌──────────────┐          ┌──────────────┐
+│              │          │              │
+│  my-data/  ◄─────────────► /var/lib/   │
+│  (persists)  │          │  postgresql/ │
+│              │          │              │
+└──────────────┘          └──────────────┘
+                          Delete container →
+                          data survives on host
+```
+
+### Accessing Data Inside a Container
+
+```bash
+# Open a shell inside a running container
+docker exec -it my-postgres bash
+
+# Run a specific command
+docker exec -it my-postgres psql -U postgres
+```
+
+| Flag | Meaning |
+|------|---------|
+| `-i` | Interactive (keep stdin open) |
+| `-t` | Allocate a terminal |
+| `-it` | Both — gives you a live shell |
+
+### Volume Commands
+
+| Action | Command |
+|--------|---------|
+| List volumes | `docker volume ls` |
+| Inspect a volume | `docker volume inspect my-data` |
+| Remove a volume | `docker volume rm my-data` |
+| Remove all unused | `docker volume prune` |
+
+> **Rule of thumb:** Any container that stores data (databases, uploads, logs) should use a volume.
+
+---
+
 ## What's Next?
 
 After mastering these fundamentals, your next steps are:
 
 1. **Docker Compose** — define and run multi-container apps (e.g., FastAPI + PostgreSQL) with a single `docker-compose.yml` file
-2. **Volumes** — persist data and share files between host and container
-3. **Docker Networking** — connect containers to each other
+2. **Docker Networking** — connect containers to each other
+3. **Deploying Docker containers** — Railway, Render, Fly.io, Google Cloud Run (free tiers available)
 4. **Kubernetes** — orchestrate containers at scale
 
 ---
