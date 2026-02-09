@@ -18,6 +18,9 @@
 8. [Multi-Stage Builds — Optimizing Image Size](#part-8-multi-stage-builds--optimizing-image-size)
 9. [Running Multiple Containers](#part-9-running-multiple-containers)
 10. [Quick Reference Cheat Sheet](#quick-reference-cheat-sheet)
+11. [Docker Layers — Understanding the Build Cache](#part-10-docker-layers--understanding-the-build-cache)
+12. [Multi-Stage Builds with uv (Production FastAPI)](#part-11-multi-stage-builds-with-uv-production-fastapi)
+13. [Volumes — Persisting Data](#part-12-volumes--persisting-data)
 
 ---
 
