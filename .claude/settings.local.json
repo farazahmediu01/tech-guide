@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C \"C:\\\\Users\\\\Faraz\\\\Desktop\\\\tech-guide\" add docker-workshop.md)",
+      "Bash(git -C \"C:\\\\Users\\\\Faraz\\\\Desktop\\\\tech-guide\" commit -m \"$\\(cat <<''EOF''\nUpdate table of contents with new sections\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git -C \"C:\\\\Users\\\\Faraz\\\\Desktop\\\\tech-guide\" push)"
+    ]
+  }
+}
