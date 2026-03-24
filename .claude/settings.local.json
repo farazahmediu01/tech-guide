@@ -3,7 +3,17 @@
     "allow": [
       "Bash(git -C \"C:\\\\Users\\\\Faraz\\\\Desktop\\\\tech-guide\" add docker-workshop.md)",
       "Bash(git -C \"C:\\\\Users\\\\Faraz\\\\Desktop\\\\tech-guide\" commit -m \"$\\(cat <<''EOF''\nUpdate table of contents with new sections\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
-      "Bash(git -C \"C:\\\\Users\\\\Faraz\\\\Desktop\\\\tech-guide\" push)"
+      "Bash(git -C \"C:\\\\Users\\\\Faraz\\\\Desktop\\\\tech-guide\" push)",
+      "Bash(cd /mnt/c/Users/Faraz/.claude/skills/fetch-library-docs && python3 scripts/mcp-client.py call -s \"npx -y @upstash/context7-mcp\" -t resolve-library-id -p '{\"query\": \"openai agents sdk python\", \"libraryName\": \"openai-agents\"}' 2>&1 | head -80)",
+      "Bash(cd /mnt/c/Users/Faraz/.claude/skills/fetch-library-docs && python3 scripts/mcp-client.py call -s \"npx -y @upstash/context7-mcp\" -t get-library-docs -p '{\"context7CompatibleLibraryID\": \"/openai/openai-agents-python\", \"topic\": \"Agent Runner function_tool context RunContextWrapper\", \"tokens\": 8000}' 2>&1)",
+      "Bash(cd /mnt/c/Users/Faraz/.claude/skills/fetch-library-docs && python3 scripts/mcp-client.py call -s \"npx -y @upstash/context7-mcp\" -t query-docs -p '{\"context7CompatibleLibraryID\": \"/openai/openai-agents-python\", \"query\": \"Agent Runner function_tool context RunContextWrapper\", \"tokens\": 8000}' 2>&1)",
+      "Bash(cd /mnt/c/Users/Faraz/.claude/skills/fetch-library-docs && python3 scripts/mcp-client.py call -s \"npx -y @upstash/context7-mcp\" -t query-docs -p '{\"libraryId\": \"/openai/openai-agents-python\", \"query\": \"Agent Runner function_tool context RunContextWrapper\", \"tokens\": 8000}' 2>&1)",
+      "Bash(cd /mnt/c/Users/Faraz/.claude/skills/fetch-library-docs && python3 scripts/mcp-client.py call -s \"npx -y @upstash/context7-mcp\" -t query-docs -p '{\"libraryId\": \"/openai/openai-agents-python\", \"query\": \"handoffs agent transfer multi-agent orchestration as_tool\", \"tokens\": 6000}' 2>&1)",
+      "Bash(cd /mnt/c/Users/Faraz/.claude/skills/fetch-library-docs && python3 scripts/mcp-client.py call -s \"npx -y @upstash/context7-mcp\" -t query-docs -p '{\"libraryId\": \"/openai/openai-agents-python\", \"query\": \"guardrails input output validation tripwire\", \"tokens\": 6000}' 2>&1)",
+      "Bash(cd /mnt/c/Users/Faraz/.claude/skills/fetch-library-docs && python3 scripts/mcp-client.py call -s \"npx -y @upstash/context7-mcp\" -t query-docs -p '{\"libraryId\": \"/openai/openai-agents-python\", \"query\": \"sessions conversation memory persistence SQLite\", \"tokens\": 5000}' 2>&1)",
+      "Bash(cd /mnt/c/Users/Faraz/.claude/skills/fetch-library-docs && python3 scripts/mcp-client.py call -s \"npx -y @upstash/context7-mcp\" -t query-docs -p '{\"libraryId\": \"/openai/openai-agents-python\", \"query\": \"tracing hooks observability RunHooks custom trace\", \"tokens\": 5000}' 2>&1)",
+      "Bash(cd /mnt/c/Users/Faraz/.claude/skills/fetch-library-docs && python3 scripts/mcp-client.py call -s \"npx -y @upstash/context7-mcp\" -t query-docs -p '{\"libraryId\": \"/openai/openai-agents-python\", \"query\": \"MCP Model Context Protocol external tools server integration\", \"tokens\": 5000}' 2>&1)",
+      "Bash(cd /mnt/c/Users/Faraz/.claude/skills/fetch-library-docs && python3 scripts/mcp-client.py call -s \"npx -y @upstash/context7-mcp\" -t query-docs -p '{\"libraryId\": \"/openai/openai-agents-python\", \"query\": \"FileSearchTool RAG vector store knowledge base output_type structured\", \"tokens\": 5000}' 2>&1)"
     ]
   }
 }

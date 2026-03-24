@@ -1,0 +1,21 @@
+[project]
+name = "openai-agents-sdk"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "ipykernel>=7.2.0",
+    "openai-agents>=0.9.3",
+    "ruff>=0.15.5",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.19.1",
+]
+
+[tool.mypy]
+  strict = true
+  python_version = "3.12"
+  ignore_missing_imports = true
