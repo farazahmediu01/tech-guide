@@ -7,7 +7,7 @@
 
 ---
 
-## Current Phase: Part 6 — AI Cloud Native Development (Docker segment)
+## Current Phase: Chapter 34 — OpenAI Agents SDK (Agent Frameworks)
 
 ### Completed Topics
 
@@ -17,20 +17,22 @@
 | 2 | 2026-02-10 | Docker Layers, Multi-stage Builds, Volumes | Part 6 | `docker-practice/app_2`, `docker-workshop.md` | Learned `uv` for Python packaging in Docker |
 | 3 | 2026-02-12 | Docker Workshop Write-up & LinkedIn Post | Part 6 | `docker-practice/DOCKER_WORKSHOP.md`, `LINKEDIN_POST.md` | Documented learnings, shared publicly |
 | 4 | 2026-02-16 | Claude Code as Learning Coach | Meta | `PROGRESS.md`, `learning_tracker.xlsx` | Set up progress tracking system |
+| 5 | 2026-02-25 | Ch.34 L0-L1: SDK Setup & First Agent | Ch.34 | `openai-agents-sdk/` | Installed SDK, built first agent with Runner |
+| 6 | 2026-03-08 | Ch.34 L2: Function Tools & Context Objects | Ch.34 | `openai-agents-sdk/00_practice.py` | Built TaskManager: add_task, list_tasks, complete_task with RunContextWrapper |
 
 ### In Progress
 
 | Topic | Started | Status | Blockers |
 |-------|---------|--------|----------|
-| — | — | — | — |
+| Ch.34 L2: Function Tools & Context Objects | 2026-03-08 | Reviewing & polishing | — |
 
 ### Up Next
 
 | Priority | Topic | Why | Prerequisite |
 |----------|-------|-----|-------------|
-| 1 | Docker Compose & Networking | Multi-container apps are the foundation for microservices and agents | Docker basics |
-| 2 | Python + FastAPI deep dive | Every AI agent needs an API layer | Docker (for deployment) |
-| 3 | OpenAI Agents SDK basics | First agentic framework on the roadmap | Python + FastAPI |
+| 1 | Ch.34 L3: Agents as Tools & Multi-Agent Orchestration | Core pattern for Digital FTE systems | L2 done |
+| 2 | Ch.34 L4: Agent Handoffs & Message Filtering | Enables routing between specialist agents | L3 done |
+| 3 | Ch.34 L5: Guardrails & Validation | Production safety for agents | L4 done |
 
 ---
 
@@ -42,10 +44,22 @@
 | Python | Beginner-Intermediate | Simple FastAPI apps |
 | Claude Code | Beginner | Set up workspace, CLAUDE.md, learning workflow |
 | Git/GitHub | Beginner | Using for version control |
+| OpenAI Agents SDK | Beginner | First agent running, 3 function tools with RunContextWrapper |
+| Pydantic | Beginner | BaseModel, Field validation, StrEnum |
 
 ---
 
 ## Session Log
+
+### Session 6 — 2026-03-08
+- **Focus:** Ch.34 L2 — Function Tools & Context Objects
+- **Done:** Built TaskManager agent with 3 tools (`add_task`, `list_tasks`, `complete_task`). Multiple code review iterations — fixed Field validation, task ID assignment, NameError bug, missing decorator, renamed counter, added Agent + Runner wiring
+- **Next:** Ch.34 L3 — Agents as Tools & Multi-Agent Orchestration
+
+### Session 5 — 2026-02-25
+- **Focus:** Ch.34 L0-L1 — SDK setup, first agent
+- **Done:** Installed OpenAI Agents SDK, built first agent with Runner.run_sync, explored Agent + model config
+- **Next:** Function tools and context objects
 
 ### Session 4 — 2026-02-16
 - **Focus:** Setting up Claude Code as a learning coach
