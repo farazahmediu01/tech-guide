@@ -30,7 +30,7 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
-
+.claude/
 # Jupyter
 .ipynb_checkpoints/
 

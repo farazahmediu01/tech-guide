@@ -1,7 +1,7 @@
 ---
 marp: true
 theme: default
-paginate: true
+class : invert
 ---
 
 # Session 1 — SQL Querying
