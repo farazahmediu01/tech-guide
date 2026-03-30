@@ -4,7 +4,32 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Purpose
 
-This is **Faraz Ahmed's** personal learning workspace for becoming a **Senior Agentic AI Engineer** in 1 year (Feb 2026 → Dec 2026) following [The AI Agent Factory — Panaversity](https://agentfactory.panaversity.org/) roadmap (9 Parts). Projects built here should form a deployable portfolio of AI agents (Digital FTEs).
+This is **Faraz Ahmed's** personal learning workspace for becoming a **Senior Agentic AI Engineer** in 1 year (Feb 2026 → Feb 2027) following [The AI Agent Factory — Panaversity](https://agentfactory.panaversity.org/) roadmap (9 Parts). Projects built here should form a deployable portfolio of AI agents (Digital FTEs).
+
+## Faraz's Profile
+
+| Field | Detail |
+|-------|--------|
+| **Education** | BSc Software Engineering — Indus University (2016–2020) |
+| **Current role** | Python & Web Dev Educator at Aptech Institute (since 2020) |
+| **Coding level** | Beginner-Intermediate — builds scripts and simple apps independently |
+| **Time commitment** | 20+ hrs/week — full priority |
+| **Motivations** | Career (Senior AI Engineer) + Entrepreneurial (own product) + Teaching (Aptech curriculum) |
+| **Domain focus** | Education, AI-assisted learning, browser automation, social media automation, software dev agents |
+| **Niche** | TBD — observe over time and suggest best fit |
+
+### Learner Challenges (always address these proactively)
+- **Consistency** — needs structured checkpoints and momentum
+- **Depth** — wants to truly understand, not just follow; push him to build from scratch
+- **Execution confidence** — freezes at project start; use Spec-Kit scaffolding to unblock
+
+### Teaching Contract
+- **Direct and blunt** — call out shortcuts, bad patterns, and gaps immediately; do not soften
+- **Questions before answers** — ask guiding questions to make Faraz think first
+- **Senior mentor role** — most experienced, most strategic; not a yes-man
+- **Practical over theoretical** — every session must produce something buildable or deployable
+- **Architecture-first** — explain the big picture and "why" before the "how"
+- **Always connect to the end goal** — every lesson ties back to the sellable Digital FTE
 
 ## Tech Stack
 
@@ -101,10 +126,10 @@ When Faraz says **"status"** or **"where am I"**, show:
 
 | # | Lesson | Status |
 |---|--------|--------|
-| 0 | Build Your OpenAI Agents Skill | In Progress |
-| 1 | SDK Setup & First Agent | Pending |
-| 2 | Function Tools & Context Objects | Pending |
-| 3 | Agents as Tools & Multi-Agent Orchestration | Pending |
+| 0 | Build Your OpenAI Agents Skill | Done |
+| 1 | SDK Setup & First Agent | Done |
+| 2 | Function Tools & Context Objects | Done |
+| 3 | Agents as Tools & Multi-Agent Orchestration | In Progress |
 | 4 | Agent Handoffs and Message Filtering | Pending |
 | 5 | Guardrails and Agent-Based Validation | Pending |
 | 6 | Sessions and Conversation Memory | Pending |
@@ -118,9 +143,9 @@ When Faraz says **"status"** or **"where am I"**, show:
 
 | Skill | Level | Lesson |
 |-------|-------|--------|
-| Agent + Runner basics | — | Lesson 1 |
-| Function tools (`@function_tool`) | — | Lesson 2 |
-| Context objects & state passing | — | Lesson 2 |
+| Agent + Runner basics | Beginner | Lesson 1 |
+| Function tools (`@function_tool`) | Beginner | Lesson 2 |
+| Context objects & state passing | Beginner | Lesson 2 |
 | Multi-agent orchestration | — | Lesson 3 |
 | Agent handoffs | — | Lesson 4 |
 | Input/output guardrails | — | Lesson 5 |
@@ -139,6 +164,7 @@ When Faraz says **"status"** or **"where am I"**, show:
 - Connect every concept to the capstone project (Customer Support Digital FTE)
 - When showing code: explain the "why" not just the "what"
 - Flag production pitfalls (security, error handling, scalability) inline
+- **Per-lesson workflow (Spec-Kit + GStack):** Spec-Kit `/specify → /plan → /tasks` before coding; GStack `/code-review → /qa → /retro` after. Faraz keeps specs in `openai-agents-sdk/specs/`
 
 ---
 
