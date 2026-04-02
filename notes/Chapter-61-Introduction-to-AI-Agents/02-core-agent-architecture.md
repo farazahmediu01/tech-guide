@@ -17,16 +17,19 @@ style: |
 
 ---
 
-## What You Will Learn
+## Session Index & Learning Goals
 
-By the end of this guide you will be able to:
+<!-- _class: invert small -->
 
-- Name and explain all 4 components of the 3+1 Architecture Framework
-- Describe what each component does and why removing any one breaks the agent
-- Trace a real task through all 4 components step by step
-- Identify which component is responsible when an agent fails
-- Explain the two types of memory an agent can have
-- Name the three reasoning strategies: ReAct, Chain-of-Thought, and Reflection
+| # | Topic | You Will Be Able To |
+|---|-------|---------------------|
+| 1 | The 3+1 Framework | Name all 4 components and their roles |
+| 2 | The Model (Brain) | Choose the right model for any task |
+| 3 | Tools + Python | Define tools and write them as Python functions |
+| 4 | Orchestration + Python | Explain memory types and implement ReAct |
+| 5 | Deployment | Choose the right deployment type |
+| 6 | Full Workflow | Trace a task through all 4 components |
+| 7 | Debugging Framework | Identify which component failed from symptoms |
 
 > **Why this matters:** This framework applies to EVERY agent you will ever build — regardless of which SDK, language, or cloud you use.
 
@@ -37,21 +40,19 @@ By the end of this guide you will be able to:
 Every AI agent — no matter how simple or complex — is built from exactly 4 components.
 
 ```
-┌─────────────────────────────────────────────────────┐
-│                   AI AGENT                          │
-│                                                     │
-│   ┌──────────┐    ┌──────────┐    ┌─────────────┐  │
-│   │  MODEL   │    │  TOOLS   │    │ORCHESTRATION│  │
-│   │          │    │          │    │             │  │
-│   │ The Brain│    │ The Hands│    │ The Nervous │  │
-│   │          │    │          │    │   System    │  │
-│   └──────────┘    └──────────┘    └─────────────┘  │
-│                                                     │
-│   ┌─────────────────────────────────────────────┐  │
-│   │              DEPLOYMENT                     │  │
-│   │                The Body                     │  │
-│   └─────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────┐
+│               AI AGENT                   │
+│                                          │
+│  ┌─────────┐  ┌─────────┐  ┌──────────┐  │
+│  │  MODEL  │  │  TOOLS  │  │ORCHESTR- │  │
+│  │         │  │         │  │  ATION   │  │
+│  │  Brain  │  │  Hands  │  │ Nervous  │  │
+│  └─────────┘  └─────────┘  └──────────┘  │
+│                                          │
+│  ┌──────────────────────────────────┐    │
+│  │    DEPLOYMENT  —  The Body       │    │
+│  └──────────────────────────────────┘    │
+└──────────────────────────────────────────┘
 ```
 
 The first 3 make the agent work. The +1 (Deployment) makes it accessible.
@@ -116,9 +117,50 @@ Every tool has: **defined inputs**, **defined outputs**, and **permission bounda
 
 ---
 
+## Tools — In Python
+
+<!-- _class: invert small -->
+
+### A tool is just a Python function
+
+```python
+# Each tool = one Python function with clear input and output
+
+def read_file(path: str) -> str:
+    with open(path, "r") as f:
+        return f.read()
+
+def web_search(query: str) -> list[str]:
+    response = search_api.get(query)
+    return response["results"]
+
+def send_email(to: str, subject: str, body: str) -> bool:
+    return email_client.send(to, subject, body)
+
+def query_database(sql: str) -> list[dict]:
+    return db.execute(sql).fetchall()
+
+# The agent's tool registry — a dict of available tools
+tools = {
+    "read_file":      read_file,
+    "web_search":     web_search,
+    "send_email":     send_email,
+    "query_database": query_database,
+}
+
+# Agent selects and calls a tool like this:
+tool_name  = "read_file"                   # LLM decided this
+tool_input = "auth.py"                     # LLM decided this
+result     = tools[tool_name](tool_input)  # Orchestration executes it
+```
+
+> The agent doesn't call functions directly — it *names* the tool and *describes* the input. The orchestration layer looks it up and runs it.
+
+---
+
 ## Tools — Permission Boundaries
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 This is critical for production agents. Every tool must define what it is **allowed** to do.
 
@@ -177,7 +219,7 @@ ORCHESTRATION
 
 ## Orchestration — Memory
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 An agent without memory is like a person with amnesia. Every task starts from zero.
 
@@ -201,7 +243,7 @@ Without it, every conversation starts from scratch — frustrating for users.
 
 ## Orchestration — Reasoning Strategies
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 The orchestration layer can use different strategies to improve output quality.
 
@@ -227,6 +269,49 @@ The agent reviews and critiques its own output before delivering it.
 ```
 "My answer was: [X]. But wait — did I consider edge case Y? Let me revise..."
 ```
+
+---
+
+## Orchestration — ReAct in Python
+
+<!-- _class: invert small -->
+
+### The ReAct loop as actual Python code
+
+```python
+def react_agent(goal: str, tools: dict, max_steps: int = 10):
+    memory = []   # short-term memory for this task
+
+    for step in range(max_steps):
+
+        # REASON — LLM looks at goal + memory and decides next action
+        thought = llm.reason(
+            goal=goal,
+            history=memory
+        )
+        print(f"Thought: {thought.text}")
+
+        # STOP — LLM decided the task is complete
+        if thought.is_done:
+            return thought.final_answer
+
+        # ACT — run the tool the LLM chose
+        tool_fn = tools[thought.tool_name]
+        result  = tool_fn(thought.tool_input)
+        print(f"Action : {thought.tool_name}({thought.tool_input})")
+        print(f"Result : {result}\n")
+
+        # OBSERVE — save what happened into memory
+        memory.append({
+            "thought": thought.text,
+            "action":  thought.tool_name,
+            "result":  result
+        })
+
+    return "Max steps reached — task incomplete"
+```
+
+> `memory` is the short-term store. Each loop adds one entry. The LLM reads the full history on every iteration to decide what to do next.
 
 ---
 
@@ -275,7 +360,7 @@ Deployment options:
 
 ## Deployment — Why It's the "+1"
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 The first 3 components (Model, Tools, Orchestration) define what the agent **can do**.
 
@@ -341,7 +426,7 @@ DEPLOYMENT  → Returns result to the user in terminal
 
 ## The Debugging Framework
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 When an agent fails, this framework tells you WHICH component to fix.
 
@@ -359,7 +444,7 @@ When an agent fails, this framework tells you WHICH component to fix.
 
 ## Common Mistakes
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 | Mistake | Wrong Thinking | Reality |
 |---------|---------------|---------|

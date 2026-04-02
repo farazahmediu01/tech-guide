@@ -100,7 +100,8 @@ def add_task(title: str, priority: int = 1) -> str:
     Returns:
         Confirmation message with task ID
     """
-    task_id = "task_" + str(hash(title))[:8]
+    import uuid
+    task_id = f"task_{uuid.uuid4().hex[:6]}"
     return f"Created task {task_id}: '{title}' with priority {priority}"
 ```
 
@@ -311,7 +312,7 @@ Because the SDK wraps your context to give you **more than just your data**:
 ```
 RunContextWrapper
 ├── .context    → YOUR data (ShoppingContext, BankContext, etc.)
-└── .usage      → SDK metadata (total_tokens, requests, input_tokens)
+└── .usage      → SDK metadata (requests, input_tokens, output_tokens, total_tokens)
 ```
 
 The `RunContextWrapper` is the SDK's container. Your context is inside it at `.context`.

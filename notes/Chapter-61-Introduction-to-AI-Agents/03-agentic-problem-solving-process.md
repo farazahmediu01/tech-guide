@@ -17,16 +17,19 @@ style: |
 
 ---
 
-## What You Will Learn
+## Session Index & Learning Goals
 
-By the end of this guide you will be able to:
+<!-- _class: invert small -->
 
-- Walk through the complete 5-Step Agent Loop step by step
-- Explain what happens at each step and why it matters
-- Trace any agent task through the loop yourself
-- Identify where the loop can break down at each step
-- Explain why the loop is the foundation of all agent behavior
-- Apply the loop to design your own agent's problem-solving flow
+| # | Topic | You Will Be Able To |
+|---|-------|---------------------|
+| 1 | Step 1 — Plan | Explain how agents break goals into steps |
+| 2 | Step 2 — Act | Describe what a tool call looks like |
+| 3 | Step 3 — Observe | Explain what agents do with tool results |
+| 4 | Step 4 — Update | Describe how short-term memory gets updated |
+| 5 | Step 5 — Evaluate | Explain termination conditions |
+| 6 | Full Loop Example | Trace any real agent task end-to-end |
+| 7 | Loop in Real Products | Map the loop to tools you already use |
 
 > **Why this matters:** The loop is not just theory — it is the exact execution model used by every production agent. Understanding it deeply means you can debug, improve, and design agents with precision.
 
@@ -174,7 +177,7 @@ Agent interprets:
 
 ## Step 3 — What Can Go Wrong Here
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 Observation failures are common in real agents. Learn to recognize them.
 
@@ -265,7 +268,7 @@ What if the evaluation fails?
 
 ## Termination Conditions
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 Agents must know when to stop. Without clear termination conditions, agents loop forever.
 
@@ -315,7 +318,7 @@ STOP     → Return: feedback report with bug + style notes
 
 ## The Loop Applied to Real Agent Products
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 | Agent Product | Goal | Loop Behaviour |
 |--------------|------|----------------|

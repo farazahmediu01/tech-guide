@@ -109,7 +109,7 @@ Specialists work **in parallel** — independent of each other.
 
 ## Pattern 1 — Coordinator in Detail
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 **Real-world example: Customer Support System**
 
@@ -188,7 +188,7 @@ Input
 
 ## Pattern 2 — Sequential in Detail
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 **Real-world example: Content Marketing Pipeline**
 
@@ -261,7 +261,7 @@ Input (goal + quality criteria)
 
 ## Pattern 3 — Iterative Refinement in Detail
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 **Real-world example: Code Review System**
 
@@ -339,7 +339,7 @@ Agent working autonomously...
 
 ## Pattern 4 — Human-in-the-Loop in Detail
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 **Real-world example: Automated Refund Processing**
 
@@ -387,7 +387,7 @@ Step 5 (Autonomous resumes):
 
 ## Pattern Selection Matrix
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 Use this to choose the right pattern for your problem:
 
@@ -404,7 +404,7 @@ Use this to choose the right pattern for your problem:
 
 ## Combining Patterns
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 Real systems use multiple patterns together:
 
@@ -452,7 +452,7 @@ Claude Code — the tool you use every day — uses all 4 patterns internally:
 
 ## Common Mistakes
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 | Mistake | Wrong Thinking | Reality |
 |---------|---------------|---------|

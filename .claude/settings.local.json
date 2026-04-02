@@ -13,7 +13,10 @@
       "Bash(cd /mnt/c/Users/Faraz/.claude/skills/fetch-library-docs && python3 scripts/mcp-client.py call -s \"npx -y @upstash/context7-mcp\" -t query-docs -p '{\"libraryId\": \"/openai/openai-agents-python\", \"query\": \"sessions conversation memory persistence SQLite\", \"tokens\": 5000}' 2>&1)",
       "Bash(cd /mnt/c/Users/Faraz/.claude/skills/fetch-library-docs && python3 scripts/mcp-client.py call -s \"npx -y @upstash/context7-mcp\" -t query-docs -p '{\"libraryId\": \"/openai/openai-agents-python\", \"query\": \"tracing hooks observability RunHooks custom trace\", \"tokens\": 5000}' 2>&1)",
       "Bash(cd /mnt/c/Users/Faraz/.claude/skills/fetch-library-docs && python3 scripts/mcp-client.py call -s \"npx -y @upstash/context7-mcp\" -t query-docs -p '{\"libraryId\": \"/openai/openai-agents-python\", \"query\": \"MCP Model Context Protocol external tools server integration\", \"tokens\": 5000}' 2>&1)",
-      "Bash(cd /mnt/c/Users/Faraz/.claude/skills/fetch-library-docs && python3 scripts/mcp-client.py call -s \"npx -y @upstash/context7-mcp\" -t query-docs -p '{\"libraryId\": \"/openai/openai-agents-python\", \"query\": \"FileSearchTool RAG vector store knowledge base output_type structured\", \"tokens\": 5000}' 2>&1)"
+      "Bash(cd /mnt/c/Users/Faraz/.claude/skills/fetch-library-docs && python3 scripts/mcp-client.py call -s \"npx -y @upstash/context7-mcp\" -t query-docs -p '{\"libraryId\": \"/openai/openai-agents-python\", \"query\": \"FileSearchTool RAG vector store knowledge base output_type structured\", \"tokens\": 5000}' 2>&1)",
+      "Bash(git commit -m \"$\\(cat <<'EOF'\nUpdate OpenAI Agents SDK lessons, notes, and resources\n\nAdds Lesson 2 \\(Function Tools & Context\\), SRO agent, support desk agent,\ntask management agent, updated Docker practice files, Agent Factory thesis\nnotes, and roadmap resources.\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git config user.email \"farazahmediu01@gmail.com\" && git config user.name \"farazahmediu01\")",
+      "WebFetch(domain:agentfactory.panaversity.org)"
     ]
   }
 }

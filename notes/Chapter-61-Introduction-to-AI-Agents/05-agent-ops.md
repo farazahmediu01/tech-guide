@@ -131,7 +131,7 @@ LM-as-Judge evaluates using rubric:
 
 ## LM-as-Judge — Scoring Rubric
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 The Agent Factory uses a 4-level scoring scale:
 
@@ -200,7 +200,7 @@ Golden Dataset Entry #2:
 
 ## Golden Dataset — Size Guidelines
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 | Stage | Dataset Size | Purpose |
 |-------|-------------|---------|
@@ -282,7 +282,7 @@ TRACE: Session ID 7f3a9b | 2026-03-30 14:23:01
 
 ## Reading a Trace to Debug
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 When your agent fails, the trace tells you exactly where and why.
 
@@ -361,7 +361,7 @@ Feedback Collection Methods:
 
 ## KPIs — Measuring Agent Performance
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 Define these **before** you deploy. If you don't know what success looks like, you can't improve.
 
@@ -412,7 +412,7 @@ CONTINUOUSLY IMPROVING AGENT
 
 ## Common Mistakes
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 | Mistake | Wrong Thinking | Reality |
 |---------|---------------|---------|

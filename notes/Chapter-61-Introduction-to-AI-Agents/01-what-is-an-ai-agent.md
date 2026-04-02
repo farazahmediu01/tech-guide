@@ -1,5 +1,5 @@
 ---
-marp: true
+marp: false
 theme: default
 class: invert
 style: |
@@ -17,16 +17,19 @@ style: |
 
 ---
 
-## What You Will Learn
+## Session Index & Learning Goals
 
-By the end of this guide you will be able to:
+<!-- _class: invert small -->
 
-- Define what an AI agent is in precise technical terms
-- Explain the difference between a regular LLM and an AI agent
-- Identify all 5 levels of agent autonomy and place real tools on the scale
-- Distinguish between a General Agent and a Custom Agent
-- Explain the Director vs Bricklayer paradigm
-- Describe the "General Agents build Custom Agents" model
+| # | Topic | You Will Be Able To |
+|---|-------|---------------------|
+| 1 | LLM vs AI Agent | Explain the key difference in one sentence |
+| 2 | The 4-Step Loop | Trace any agent's execution step by step |
+| 3 | The Loop in Python | Read and explain agent loop code |
+| 4 | 5 Levels of Autonomy | Place any tool on the 0–4 scale |
+| 5 | General vs Custom Agents | Choose the right agent type for any job |
+| 6 | Director vs Bricklayer | Write better prompts that get better results |
+| 7 | The Agent Factory Model | Explain how Digital FTEs are manufactured |
 
 > **Why this matters:** Every agent you will ever build starts here. If you misunderstand what an agent *is*, you will build the wrong thing.
 
@@ -111,6 +114,50 @@ Loop Iteration 4:
   OBSERVE → All tests passed ✓
   STOP    → Return result to user
 ```
+
+---
+
+## The Agent Loop — In Python
+
+<!-- _class: invert small -->
+
+### What does the loop actually look like in code?
+
+```python
+# A simple agent loop — no SDK needed, just Python
+def agent_loop(goal: str, tools: dict, max_iterations: int = 5):
+    memory = []
+
+    for i in range(max_iterations):
+
+        # Step 1: REASON — LLM decides what to do next
+        action = llm_think(goal, memory)
+
+        # Step 4: STOP — goal is achieved
+        if action["type"] == "DONE":
+            return action["result"]
+
+        # Step 2: ACT — call the right tool
+        tool_fn = tools[action["tool"]]
+        result = tool_fn(action["input"])
+
+        # Step 3: OBSERVE — save what happened
+        memory.append({"action": action, "result": result})
+
+    return "Max iterations reached — task incomplete"
+
+
+# Example tools the agent can use
+tools = {
+    "read_file":  lambda path: open(path).read(),
+    "run_test":   lambda cmd: run_command(cmd),
+    "edit_file":  lambda args: write_file(args["path"], args["content"]),
+}
+
+agent_loop("Fix the failing test in auth.py", tools)
+```
+
+> The loop, the memory list, and the tool dictionary — this is the skeleton of every agent you will build.
 
 ---
 

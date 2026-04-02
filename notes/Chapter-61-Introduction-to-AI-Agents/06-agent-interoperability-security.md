@@ -84,7 +84,7 @@ A2A (Agent-to-Agent Protocol) standardizes three things:
 
 ## Agent Cards — An Agent's Identity Document
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 Every agent in an A2A system publishes an **Agent Card** — a JSON description of itself.
 
@@ -227,7 +227,7 @@ LAYER 2: GUARD MODEL
 
 ## Layer 1 — Deterministic Guardrails
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 These are hard limits enforced at the infrastructure level — **no LLM can override them**.
 
@@ -250,7 +250,7 @@ If you use an LLM to enforce these limits, a clever attacker can prompt-inject t
 
 ## Layer 2 — Guard Model
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 A **Guard Model** is a separate LLM that watches the main agent and flags suspicious behavior.
 
@@ -279,7 +279,7 @@ Guard Model decision: BLOCK — flag for human review
 
 ## The Capability-Risk Matrix
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 For every capability you give an agent, identify the specific risk:
 
@@ -296,7 +296,7 @@ For every capability you give an agent, identify the specific risk:
 
 ## Agent Identity — The 4 Components
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 Every deployed agent needs a full identity:
 
@@ -403,7 +403,7 @@ The agent:
 
 ## Common Mistakes
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 | Mistake | Wrong Thinking | Reality |
 |---------|---------------|---------|

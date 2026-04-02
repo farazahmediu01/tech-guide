@@ -135,7 +135,7 @@ Which level is right for your use case? Why?
 
 ## Section 2 — Architecture (3+1 Model)
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 ```
 ARCHITECTURE
@@ -191,7 +191,7 @@ Answer each question:
 
 ## Section 3 — Process (5-Step Loop)
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 Describe how the agent runs through the 5-Step Loop for its specific task:
 
@@ -290,7 +290,7 @@ Design the Version 2.0 of your Study Assistant as a multi-agent system:
 
 ## Section 5 — Security
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 ```
 SECURITY — SupportBot
@@ -342,7 +342,7 @@ How do your guardrails and guard model prevent this?
 
 ## Complete Example — SupportBot Spec
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 ```
 AGENT: SupportBot v1.0
@@ -381,7 +381,7 @@ SECTION 5 — SECURITY
 
 ## The 3 Agent Categories — Your First Build Options
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 The Agent Factory recommends starting with one of these 3 categories:
 
@@ -450,7 +450,7 @@ Using the 5-section template, write a complete agent spec for an agent you would
 
 ## Common Mistakes
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 | Mistake | Wrong Thinking | Reality |
 |---------|---------------|---------|

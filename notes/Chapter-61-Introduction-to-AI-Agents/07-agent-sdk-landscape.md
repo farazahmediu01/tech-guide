@@ -82,7 +82,7 @@ billing_agent = Agent(
 
 ## SDK 1 — OpenAI Agents SDK — Strengths & Limits
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 | Dimension | Detail |
 |-----------|--------|
@@ -130,7 +130,7 @@ invoice_processor = Agent(
 
 ## SDK 2 — Google ADK — Strengths & Limits
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 | Dimension | Detail |
 |-----------|--------|
@@ -178,7 +178,7 @@ research_agent = Agent(
 
 ## SDK 3 — Anthropic Agents Kit — Strengths & Limits
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 | Dimension | Detail |
 |-----------|--------|
@@ -228,7 +228,7 @@ product_review = GroupChat(
 
 ## SDK 4 — Microsoft Agent Framework — Strengths & Limits
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 | Dimension | Detail |
 |-----------|--------|
@@ -248,7 +248,7 @@ product_review = GroupChat(
 
 ## Framework Comparison Matrix
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 | Dimension | OpenAI SDK | Google ADK | Anthropic Kit | Microsoft MAF |
 |-----------|-----------|-----------|--------------|--------------|
@@ -336,7 +336,7 @@ UNIVERSAL ACROSS ALL 4 FRAMEWORKS:
 
 ## Common Mistakes
 
-<!-- _class: small -->
+<!-- _class: invert small -->
 
 | Mistake | Wrong Thinking | Reality |
 |---------|---------------|---------|
