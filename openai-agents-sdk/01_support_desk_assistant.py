@@ -1,6 +1,6 @@
-from agents import Agent, Runner, function_tool, RunContextWrapper
-from pydantic import BaseModel, Field
 from enum import StrEnum
+from pydantic import BaseModel, Field
+from agents import Agent, Runner, function_tool, RunContextWrapper
 from clients import gemini_3_flash_preview as gemini_model
 
 
@@ -136,7 +136,7 @@ Response style:
 """
 
 support_agent = Agent[SupportContext](
-    name="SupportDeskAgent",
+    name="Customer Support Agent",
     instructions=instructions,
     tools=[lookup_order, create_ticket, check_account_status],
     model=gemini_model,

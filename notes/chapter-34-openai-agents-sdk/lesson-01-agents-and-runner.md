@@ -158,50 +158,94 @@ Specific instructions produce reliable behavior.
 
 ### `model`
 
+The model string is passed directly to the OpenAI API by default.
+You can also pass a `Model` instance to use non-OpenAI providers (covered in [Model Configuration](#model-configuration)).
+
 ```python
-agent = Agent(name="Fast", instructions="...", model="gpt-4o-mini")   # cheapest/fastest
-agent = Agent(name="Smart", instructions="...", model="gpt-4o")        # best default
-agent = Agent(name="Reason", instructions="...", model="o3-mini")      # complex reasoning
+# 1. Simple chat agent — greets users, answers FAQs
+agent = Agent(
+    name="FAQBot",
+    instructions="Answer common questions about our product. Be concise and friendly.",
+    model="gpt-4o-mini",    # Fast and cheap — perfect for simple Q&A
+)
+
+# 2. Requires deeper thinking — legal clause analysis
+agent = Agent(
+    name="ContractAnalyst",
+    instructions="Analyze legal contracts. Identify risks, obligations, and ambiguous clauses.",
+    model="o3-mini",        # Reasoning model — thinks step by step before answering
+)
+
+# 3. Works with images — product photo quality checker
+agent = Agent(
+    name="ProductPhotoReviewer",
+    instructions="Review product photos. Check lighting, background, and image quality. Flag issues.",
+    model="gpt-4o",         # Vision-capable — can read and describe images
+)
+
+# 4. Works with audio — meeting transcription summarizer
+agent = Agent(
+    name="MeetingSummarizer",
+    instructions="Listen to meeting audio. Produce a structured summary with action items.",
+    model="gpt-4o-audio-preview",  # Audio-capable — accepts audio input directly
+)
 ```
 
-In a multi-agent system, different agents can use different models:
+In a multi-agent system, assign the cheapest model that can do the job:
 
 ```python
-triage_agent    = Agent(name="Triage", ..., model="gpt-4o-mini")  # cheap — just routing
-research_agent  = Agent(name="Research", ..., model="gpt-4o")     # complex analysis
+triage_agent   = Agent(name="Triage",   ..., model="gpt-4o-mini")  # just routing — keep it cheap
+research_agent = Agent(name="Research", ..., model="gpt-4o")        # deep analysis — needs power
 ```
 
 ### `output_type`
 
 By default, `result.final_output` is a plain string.
-If you set `output_type`, the agent is forced to return a structured Pydantic object:
+If you set `output_type`, the agent is forced to return a structured Pydantic object.
+
+**Example — Chef agent that returns a structured recipe:**
 
 ```python
 from pydantic import BaseModel
-from agents import Agent
+from agents import Agent, Runner
 
-class SupportTicket(BaseModel):
-    subject: str
-    priority: str   # "low" | "medium" | "high" | "critical"
-    summary: str
-    escalate_to_human: bool
+class Recipe(BaseModel):
+    dish_name: str
+    cuisine: str
+    prep_time_minutes: int
+    ingredients: list[str]
+    difficulty: str   # "easy" | "medium" | "hard"
 
-agent = Agent(
-    name="TicketCreator",
-    instructions="Extract support ticket details from the user's message.",
-    output_type=SupportTicket,
+chef_agent = Agent(
+    name="ChefAdvisor",
+    instructions="""You are a professional chef.
+    When given a list of ingredients, suggest one recipe that uses them.
+    Be practical — suggest dishes a home cook can actually make.""",
+    output_type=Recipe,
 )
 
-result = Runner.run_sync(agent, "My laptop screen cracked after 2 days!")
-ticket = result.final_output   # This is a SupportTicket object, not a string
-print(ticket.priority)         # "high"
-print(ticket.escalate_to_human) # True
+result = Runner.run_sync(
+    chef_agent,
+    "I have chicken, garlic, lemon, and rosemary. What can I make?"
+)
+
+recipe = result.final_output        # Recipe object — not a plain string
+print(recipe.dish_name)             # "Lemon Rosemary Roasted Chicken"
+print(recipe.prep_time_minutes)     # 15
+print(recipe.difficulty)            # "easy"
+print(recipe.ingredients)           # ["chicken thighs", "garlic", "lemon", "rosemary", "olive oil"]
 ```
 
+Without `output_type`, the agent might reply:
+> *"You could make Lemon Rosemary Chicken! It takes about 15 minutes to prep..."*
+
+With `output_type`, you get a Python object your code can actually work with —
+save it to a database, render it in a UI, pass it to another agent.
+
 > **When to use `output_type`:**
-> When downstream code needs to process the agent's output programmatically
-> (store in DB, trigger another workflow, fill a form).
-> When you need a plain conversational reply, leave it as `None`.
+> When downstream code needs to process the output programmatically
+> (store in DB, render in UI, feed into another workflow).
+> When you just need a conversational reply, leave it as `None`.
 
 ### `model_settings`
 
@@ -219,6 +263,18 @@ agent = Agent(
     ),
 )
 ```
+
+> **Warning: Not all `ModelSettings` fields work with every model.**
+>
+> | Setting | OpenAI GPT-4o | o3-mini (reasoning) | Gemini / Ollama |
+> |---------|:---:|:---:|:---:|
+> | `temperature` | ✅ | ❌ fixed internally | ⚠️ varies by provider |
+> | `max_tokens` | ✅ | ✅ | ⚠️ varies by provider |
+> | `top_p` | ✅ | ❌ | ⚠️ varies by provider |
+>
+> Reasoning models (`o3-mini`, `o1`) control their own temperature — passing it is silently ignored or raises an error.
+> When using Gemini or Ollama, check that provider's documentation for which settings are supported.
+> **When in doubt: only set what you need and test it.**
 
 ---
 
@@ -486,49 +542,82 @@ async def chat(msg: str):
 
 ### Choosing the Right Model
 
-```python
-# For most agents — good balance of speed and intelligence
-agent = Agent(name="A", instructions="...", model="gpt-4o")
+See the `model` parameter section above for 4 real-world agent examples.
+Quick reference:
 
-# For routing/classification agents — fast and cheap
-agent = Agent(name="A", instructions="...", model="gpt-4o-mini")
-
-# For complex multi-step reasoning
-agent = Agent(name="A", instructions="...", model="o3-mini")
-```
+| Use Case | Model | Why |
+|----------|-------|-----|
+| FAQ bots, routing, simple chat | `gpt-4o-mini` | Fast and cheap |
+| Analysis, code generation, complex tasks | `gpt-4o` | Best general capability |
+| Multi-step reasoning, math, logic | `o3-mini` | Thinks before it answers |
+| Vision tasks (images, screenshots) | `gpt-4o` | Natively vision-capable |
+| Audio input/output | `gpt-4o-audio-preview` | Accepts and generates audio |
 
 ### Using Non-OpenAI Models
 
-The SDK supports any OpenAI-compatible API. Two common options:
+The SDK wraps any OpenAI-compatible API. The pattern is always the same:
+1. Create an `AsyncOpenAI` client pointing to the provider's base URL
+2. Wrap it in `OpenAIChatCompletionsModel`
+3. Pass that as the `model` to your `Agent`
 
-**Google Gemini:**
+**Google Gemini** (from your working `clients.py`):
+
 ```python
-import openai
-from agents import set_tracing_disabled
-from agents.models.openai_chatcompletions import OpenAIChatCompletionsModel
+from openai import AsyncOpenAI
+from agents import Agent, OpenAIChatCompletionsModel, set_tracing_disabled
+from dotenv import load_dotenv
+import os
 
-set_tracing_disabled(True)  # Required — tracing only works with OpenAI
+load_dotenv()
 
-gemini_client = openai.AsyncOpenAI(
-    api_key=os.environ["GEMINI_API_KEY"],
+# Step 1 — Must disable tracing when using non-OpenAI providers
+set_tracing_disabled(True)
+
+# Step 2 — Create a client pointing to Gemini's OpenAI-compatible endpoint
+gemini_client = AsyncOpenAI(
+    api_key=os.getenv("GEMINI_API_KEY"),
     base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
 )
-model = OpenAIChatCompletionsModel(
-    model="gemini-2.0-flash",
+
+# Step 3 — Wrap in OpenAIChatCompletionsModel
+gemini_3_flash = OpenAIChatCompletionsModel(
     openai_client=gemini_client,
+    model="gemini-3-flash-preview",
 )
-agent = Agent(name="A", instructions="...", model=model)
+
+# Step 4 — Pass to Agent
+agent = Agent(
+    name="GeminiAssistant",
+    instructions="You are a helpful assistant.",
+    model=gemini_3_flash,   # Model instance, not a string
+)
 ```
 
-**Local Ollama (free, offline):**
+**Local Ollama (free, runs offline):**
+
 ```python
-ollama_client = openai.AsyncOpenAI(
-    api_key="ollama",
-    base_url="http://localhost:11434/v1",
+from openai import AsyncOpenAI
+from agents import Agent, OpenAIChatCompletionsModel, set_tracing_disabled
+
+set_tracing_disabled(True)  # Required for non-OpenAI providers
+
+ollama_client = AsyncOpenAI(
+    api_key="ollama",                       # placeholder — Ollama doesn't need a real key
+    base_url="http://localhost:11434/v1",   # Ollama's local server
 )
-model = OpenAIChatCompletionsModel(model="llama3.2", openai_client=ollama_client)
-agent = Agent(name="A", instructions="...", model=model)
+
+llama = OpenAIChatCompletionsModel(
+    openai_client=ollama_client,
+    model="llama3.2",
+)
+
+agent = Agent(name="LocalAgent", instructions="Be helpful.", model=llama)
 ```
+
+> **Why `set_tracing_disabled(True)`?**
+> The SDK's tracing system sends run data to OpenAI's platform.
+> Non-OpenAI providers can't receive this data — it will error.
+> Always call `set_tracing_disabled(True)` before running agents on Gemini or Ollama.
 
 ### ModelSettings — Fine-Tuning Behavior
 
@@ -549,6 +638,8 @@ agent = Agent(
 |---------|-------------|----------------|
 | `temperature` | Randomness (0.0–2.0, default ~1.0) | Lower for extraction/classification; higher for creative writing |
 | `max_tokens` | Max output length | Set when you need to control cost or response length |
+
+> **Reminder:** Not all settings work with all models. See the warning under `model_settings` above.
 
 ---
 

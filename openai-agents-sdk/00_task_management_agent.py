@@ -7,7 +7,7 @@ class TaskManagerContext(BaseModel):
     user_id: str
     current_project: str
     tasks_added: int = 0
-    tasks: list[dict] = []
+    tasks: list[dict] = [] # defacult factory
 
 
 # Tool 1 — Add a task
