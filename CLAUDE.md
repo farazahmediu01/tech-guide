@@ -10,6 +10,7 @@ This is **Faraz Ahmed's** personal learning workspace for becoming a **Senior Ag
 
 | Field | Detail |
 |-------|--------|
+
 | **Education** | BSc Software Engineering — Indus University (2016–2020) |
 | **Current role** | Python & Web Dev Educator at Aptech Institute (since 2020) |
 | **Coding level** | Beginner-Intermediate — builds scripts and simple apps independently |
