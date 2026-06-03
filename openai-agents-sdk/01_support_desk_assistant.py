@@ -10,6 +10,7 @@ class Order(BaseModel):
     status: str
     date: str
 
+
 class TicketStatus(StrEnum):
     OPEN = "open"
     IN_PROGRESS = "in_progress"
@@ -61,8 +62,8 @@ def lookup_order(ctx: RunContextWrapper[SupportContext], order_id: str) -> str:
     """
     for order in ctx.context.orders:
         if order.id == order_id:
-            return order.model_dump_json()  
-    
+            return order.model_dump_json()
+
     return f"Order with ID: {order_id} not found."
 
 
@@ -71,7 +72,7 @@ def create_ticket(
     ctx: RunContextWrapper[SupportContext],
     subject: str,
     description: str,
-    order_id: str|None = None,
+    order_id: str | None = None,
     priority: int = 5,
 ) -> str:
     """
@@ -84,10 +85,10 @@ def create_ticket(
         priority: The priority of the ticket where 1 is highest and 5 is lowest. Default is 5.
     Returns:
         JSON representation of the created ticket.
-    """ 
+    """
     if order_id is not None:
         if not any(o.id == order_id for o in ctx.context.orders):
-            return f"Order {order_id} not found for this customer." 
+            return f"Order {order_id} not found for this customer."
 
     ticket_id = f"Tick-{len(ctx.context.tickets) + 1}"
     ticket = Ticket(
@@ -147,7 +148,9 @@ support_context_1 = SupportContext(
     customer_id="Customer-001",
     customer_name="Ali",
     orders=[
-        Order(id="ORD-001", product="Laptop Pro", status="delivered", date="2026-02-10"),
+        Order(
+            id="ORD-001", product="Laptop Pro", status="delivered", date="2026-02-10"
+        ),
         Order(id="ORD-002", product="Mouse", status="in transit", date="2026-02-23"),
     ],
 )
