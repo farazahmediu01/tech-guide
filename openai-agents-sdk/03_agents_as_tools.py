@@ -1,6 +1,6 @@
-from agents import Agent, Runner
+from agents import Agent, Runner, RunResult, RunResultStreaming
 from pydantic import BaseModel
-from clients import gemini_3_flash_preview
+from clients import gemini_35_flash
 
 
 # ------------------------------------------------------------------
@@ -35,7 +35,7 @@ researcher = Agent(
     - A simple real-world analogy that explains the concept
     Beginner-friendly language only. No jargon without explanation.""",
     output_type=ResearchOutput,
-    model=gemini_3_flash_preview,
+    model=gemini_35_flash,
 )
 
 writer = Agent(
@@ -48,7 +48,7 @@ writer = Agent(
     - One practical hands-on exercise students can run immediately
     Simple, direct, no fluff.""",
     output_type=LessonDraft,
-    model=gemini_3_flash_preview,
+    model=gemini_35_flash,
 )
 
 
@@ -59,13 +59,13 @@ writer = Agent(
 # Pydantic result into a formatted string the manager can read.
 # ------------------------------------------------------------------
 
-def extract_research(result) -> str:
+async def extract_research(result: RunResult | RunResultStreaming) -> str:
     r: ResearchOutput = result.final_output
     facts = "\n".join(f"- {f}" for f in r.key_facts)
     return f"TOPIC: {r.topic}\nFACTS:\n{facts}\nANALOGY: {r.beginner_analogy}"
 
 
-def extract_draft(result) -> str:
+async def extract_draft(result: RunResult | RunResultStreaming) -> str:
     d: LessonDraft = result.final_output
     return (
         f"TITLE: {d.title}\n"
@@ -100,7 +100,7 @@ course_manager = Agent(
             custom_output_extractor=extract_draft,
         ),
     ],
-    model=gemini_3_flash_preview,
+    model=gemini_35_flash,
 )
 
 
@@ -120,7 +120,7 @@ print(result.final_output)
 # Use case 2: verify context isolation — each run is independent
 result = Runner.run_sync(
     course_manager,
-    "Create a beginner lesson on Python list comprehensions.",
+    "Create a beginner lesson on Python Async Context Manager with aiosqlite.",
 )
 print("\n=== Lesson 2: List Comprehensions ===")
 print(result.final_output)
