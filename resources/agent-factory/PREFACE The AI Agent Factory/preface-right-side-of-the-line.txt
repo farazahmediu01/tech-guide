@@ -1,0 +1,261 @@
+    THE AGENT FACTORY                                                                  01 / 20
+                                                       agentfactory.panaversity.org
+     FEBRUARY 4 ­ 9, 2026 · SIX TRADING SESSIONS
+
+1$ trillion
+
+erased from global software equities. Not because
+anything broke. Because the market finally registered
+what had arrived.
+
+PREFACE · THE RIGHT SIDE OF THE LINE
+    THE AGENT FACTORY                                                             02 / 20
+     PREFACE · THE AGENT FACTORY
+                                              agentfactory.panaversity.org
+The 2026 repricing is underway.                                               May 2026
+
+The Right Side                                   agentfactory.panaversity.org
+
+of the Line.
+
+A keynote on what just happened to software,
+and what to build on the other side of it.
+
+PREFACE · THE RIGHT SIDE OF THE LINE
+    THE AGENT FACTORY                                                 03 / 20
+                                      agentfactory.panaversity.org
+        PART I OF IV
+
+Six sessions, one trillion dollars.
+
+The Shock.
+
+PREFACE · THE RIGHT SIDE OF THE LINE
+THE AGENT FACTORY · PART I · THE SHOCK                             Bloomberg · Feb 4, 2026 04 / 20
+
+FEB 4 ­ 9, 2026 · S&P SOFTWARE & SERVICES
+
+"The
+SaaSpocalypse."
+
+~$1T                                 6                             1
+
+market value erased from software &  consecutive trading sessions  trigger: eleven Claude Cowork
+services                                                           plugins
+
+PREFACE · THE RIGHT SIDE OF THE LINE                                                    agentfactory.panaversity.org
+THE AGENT FACTORY · PART I · THE SHOCK           Bloomberg · Feb 3 ­ 9, 2026 05 / 20
+ANTHROPIC RELEASES 11 PLUGINS FOR CLAUDE COWORK
+
+The hit list.
+
+One-day moves on the day plugins for legal, finance, sales, and data analysis
+went live.
+
+COMPANY                                                                                 SECTOR  ONE-DAY
+                                                                                                     MOVE
+Thomson Reuters                                                                   Legal tech
+                                                                                Information       -16%
+Legal & professional info                                                      Sales / SaaS       -14%
+                                                                                                   -7%
+RELX                                                                                 Workflow      -7%
+
+LexisNexis · scientific & legal                                                agentfactory.panaversity.org
+
+Salesforce
+
+CRM · Slack · Tableau
+
+ServiceNow
+
+ITSM · workflow software
+
+PREFACE · THE RIGHT SIDE OF THE LINE
+    THE AGENT FACTORY · PART I · THE SHOCK                              Bloomberg · Feb 3, 2026 06 / 20
+
+     ONE PLUGIN. ONE TRADING SESSION.               The plugin in question:
+
+$285B                                               · Triages incoming NDAs at scale
+                                                    · Tracks regulatory compliance
+erased from legal tech, software, and professional  · Reviews and redlines contracts
+services
+                                                    Work that justified $200/month seats -- done by an agent
+IN ONE TRADING DAY                                  at API cost.
+
+PREFACE · THE RIGHT SIDE OF THE LINE                                           agentfactory.panaversity.org
+    THE AGENT FACTORY · PART I · THE SHOCK                          07 / 20
+
+THREE WEEKS LATER · FEBRUARY 24, 2026
+
+Then it got worse.
+
+The next selloff didn't need a product. It needed a Substack post.
+
+PREFACE · THE RIGHT SIDE OF THE LINE                                agentfactory.panaversity.org
+    THE AGENT FACTORY · PART I · THE SHOCK                                           WSJ · Feb 24, 2026 08 / 20
+     THE CITRINI SELLOFF · A 7,000-WORD HYPOTHETICAL
+
+A thought experiment moved markets.
+
+-800                         -13%                           -9%+                     0
+
+Dow points lost in a single  IBM's worst day since 2000     Datadog · CrowdStrike ·  products launched · forecasts
+
+session                                                     Zscaler                  issued
+
+The piece was dated June 2028. The market traded it today.                           agentfactory.panaversity.org
+
+PREFACE · THE RIGHT SIDE OF THE LINE
+THE AGENT FACTORY · PART I · THE SHOCK  09 / 20
+
+"For the entirety of modern economic
+history, human intelligence has
+been the scarce input. We are now
+experiencing the unwind of that
+premium."
+
+-- CITRINI RESEARCH · FEBRUARY 2026
+
+PREFACE · THE RIGHT SIDE OF THE LINE    agentfactory.panaversity.org
+THE AGENT FACTORY                              10 / 20
+
+        PART II OF IV
+
+A premium that unwinds has to flow somewhere.
+
+The Bid.
+
+PREFACE · THE RIGHT SIDE OF THE LINE           agentfactory.panaversity.org
+    THE AGENT FACTORY · PART II · THE BID  Bloomberg · Apr 14, 2026 · Sacra 11 / 20
+     APRIL 14, 2026 · VC TERM SHEETS
+                                                            $800B
+$800 billion vs. 1.9 million jobs.
+
+Anthropic ~1,000 employees
+
+India's six largest IT services firms ~1.9M employees · ~$100B revenue      ~$250B
+
+TCS · Infosys · HCLTech · Wipro · LTIMindtree · Tech Mahindra
+
+One thousand people, valued at 3.2× the combined market cap of an industry  ratio · 800 / 250
+employing 1.9 million.
+
+PREFACE · THE RIGHT SIDE OF THE LINE                                    agentfactory.panaversity.org
+THE AGENT FACTORY · PART II · THE BID      TechCrunch · Jun 26, 2023 12 / 20
+
+THE EARLY TELL, IN RETROSPECT · JUNE 2023  97%
+
+Thomson Reuters paid                       CoCounsel score on complex legal evaluations
+$650M for Casetext.
+                                           3 yrs
+Not for the technology. For the encoded
+legal expertise -- the ability to do       before SaaSpocalypse made the pattern market-wide
+
+substantive legal work that previously
+required expensive human professionals.
+
+PREFACE · THE RIGHT SIDE OF THE LINE       agentfactory.panaversity.org
+    THE AGENT FACTORY · PART II · THE BID                              13 / 20
+     THREE EVENTS. ONE COHERENT THESIS.
+
+Value is shifting from those who use software
+to those who own the agents.
+
+SIGNAL 01 · THE PRODUCT               SIGNAL 02 · THE THESIS           SIGNAL 03 · THE BID
+
+SaaSpocalypse                         Citrini                          $800B
+
+Autonomous agents can do the          The disruption extends, well     The market will pay, today, for the
+professional work that seat-based     beyond software, to the broader  company manufacturing the
+software charged for.                 category of knowledge work.      agents that do the work.
+
+PREFACE · THE RIGHT SIDE OF THE LINE                                   agentfactory.panaversity.org
+THE AGENT FACTORY                                             14 / 20
+
+        PART III OF IV
+
+Three terms that should survive into your next conversation.
+
+The Vocabulary.
+
+PREFACE · THE RIGHT SIDE OF THE LINE  agentfactory.panaversity.org
+    THE AGENT FACTORY · PART III · THE VOCABULARY                      15 / 20
+     TERM 01 OF 03
+                                                   also: Digital FTEs
+AI Workers.
+
+Role-based, supervised, spec-driven                N O T chatbots
+AI agents performing real work inside              N O T demos
+real organizations.                                Y E S a new factor of production
+
+PREFACE · THE RIGHT SIDE OF THE LINE                                             agentfactory.panaversity.org
+THE AGENT FACTORY · PART III · THE VOCABULARY  16 / 20
+TERM 02 OF 03
+
+AI-Native Companies.
+
+Companies built around AI Workers -- where     The org chart inverts.
+the workforce is mostly digital, and the
+product is whatever that workforce ships.      Humans supervise, specify, and govern.
+                                               Agents execute the work continuously.
+PREFACE · THE RIGHT SIDE OF THE LINE
+                                                                             agentfactory.panaversity.org
+    THE AGENT FACTORY · PART III · THE VOCABULARY                         17 / 20
+     TERM 03 OF 03 · AND THE PRACTICE THAT MAKES THEM
+
+The Agent Factory.
+
+The discipline that manufactures the                   NOT                BUT
+workforce -- spec-driven, human-
+supervised, agent-tool-powered.                        a product you buy  a practice you adopt
+
+PREFACE · THE RIGHT SIDE OF THE LINE                   agentfactory.panaversity.org
+THE AGENT FACTORY · PART III · THE VOCABULARY                                                                           18 / 20
+
+THE INTERFACE TO CONSTRUCTION IS NOW NATURAL LANGUAGE
+
+The build is no longer
+the bottleneck.
+
+English. Urdu. Spanish. Whatever language you think in. You describe the job;
+the agent assembles the solution. Domain experts without programming
+backgrounds are shipping production AI workers right now.
+
+The bottleneck has moved -- from writing the code to knowing what to encode. Domain expertise is the scarce input now.
+
+PREFACE · THE RIGHT SIDE OF THE LINE           agentfactory.panaversity.org
+    THE AGENT FACTORY · PART IV · THE DOORS                     19 / 20
+     FOUR FREE, OPEN RESOURCES
+
+Four doors in.
+
+01 T H E B I G P I C T U R E                                    02 T H E W O R K F O R C E
+
+The Thesis                                                      AI Worker Catalog
+
+How AI Agents, AI Workers, and AI-Native Companies fit          The real jobs AI Workers are doing today across Sales,
+together -- in plain language.                                  Finance, Support, Engineering, HR, and Legal.
+
+agentfactory.panaversity.org/docs/thesis                        agentfactory.panaversity.org/docs/worker-catalog
+
+  03 YO U R F I R S T B U I L D                                 04 T H E F O U N DAT I O N S
+
+  Agentic Coding Crash Course                                   Part 0 · Thinking is the
+                                                                Curriculum
+   Hands-on first build. Simple, practical. You will be coding
+   agents before you know it.                                   The book's actual starting point. Eleven chapters of
+                                                                thinking skills before tools enter the picture.
+   agentfactory.panaversity.org/docs/agentic-coding...
+                                                                agentfactory.panaversity.org/docs/Thinking-is-th...
+PREFACE · THE RIGHT SIDE OF THE LINE                                                                 agentfactory.panaversity.org
+THE AGENT FACTORY                                20 / 20
+   WELCOME
+
+The market has been telling you what is coming.
+
+This book is what to do about it.
+
+Open the first door. That is all it takes.  agentfactory.panaversity.org
+
+PREFACE · THE RIGHT SIDE OF THE LINE           agentfactory.panaversity.org
+

@@ -1,0 +1,43 @@
+# Chapter 81: Pipecat
+
+> **Archived from:** <https://agentfactory.panaversity.org/docs/Building-Realtime-Voice-Agents/pipecat>  
+> **Wayback snapshot:** 2026-03-10  
+> **Status:** retired from the live site — recovered for offline study.
+
+---
+
+Build flexible voice pipelines. This chapter creates a `pipecat` skill for frame-based pipelines, multi-provider integration, and custom processors.
+
+* * *
+
+## Goals​
+
+  * Understand Pipecat’s pipeline model and transports
+  * Integrate multiple providers and plugins
+  * Implement custom processors for specialized logic
+  * Deploy Pipecat services for production voice agents
+  * Capture patterns in a reusable Pipecat skill
+
+
+* * *
+
+## Lesson Progression​
+
+  * Build the Pipecat skill
+  * Pipeline architecture and transports
+  * Multi-provider integrations and plugins
+  * Custom processors and extensions
+  * Capstone: Pipecat-based voice agent; finalize the skill
+
+
+* * *
+
+## Outcome & Method​
+
+You finish with a production Pipecat pipeline and a reusable Pipecat skill.
+
+* * *
+
+## Prerequisites​
+
+  * Chapters 79-80 foundations
